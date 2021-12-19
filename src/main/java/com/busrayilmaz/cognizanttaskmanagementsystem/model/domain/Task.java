@@ -1,9 +1,6 @@
-package com.busrayilmaz.cognizanttaskmanagementsystem.model;
+package com.busrayilmaz.cognizanttaskmanagementsystem.model.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -11,22 +8,23 @@ import java.time.LocalDateTime;
 public class Task {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column
+    @Column(nullable = false)
     private String name;
     @Column
     private String groupName;
     @Column
     private int assignee;
-    @Column
+    @Column(columnDefinition = "int default null")
     private int parentTaskId;
-    @Column
+    @Column(nullable = false)
     private LocalDateTime startDate;
     @Column
     private LocalDateTime endDate;
     @Column
     private long duration;
-    @Column
+    @Column(nullable = false, columnDefinition = "boolean default false")
     private boolean isFinished;
 
     public int getId() {

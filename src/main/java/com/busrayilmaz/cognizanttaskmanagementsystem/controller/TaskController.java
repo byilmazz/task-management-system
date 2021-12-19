@@ -1,9 +1,14 @@
 package com.busrayilmaz.cognizanttaskmanagementsystem.controller;
 
-import com.busrayilmaz.cognizanttaskmanagementsystem.model.Task;
+import com.busrayilmaz.cognizanttaskmanagementsystem.model.domain.Task;
+import com.busrayilmaz.cognizanttaskmanagementsystem.model.dto.TaskDTO;
 import com.busrayilmaz.cognizanttaskmanagementsystem.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/task")
@@ -13,9 +18,13 @@ public class TaskController {
     TaskService taskService;
 
     @GetMapping("/{taskId}")
-    private Task getTask(@PathVariable("taskId") int taskId)
-    {
-        return taskService.getTaskById(taskId);
+    private ResponseEntity<TaskDTO> getTask(@PathVariable("taskId") int taskId) {
+        return new ResponseEntity<>(taskService.getTaskById(taskId), HttpStatus.OK);
+    }
+
+    @GetMapping()
+    private ResponseEntity<List<TaskDTO>> getTasks() {
+        return new ResponseEntity<>(taskService.getTasks(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{taskId}")
@@ -25,16 +34,16 @@ public class TaskController {
     }
 
     @PostMapping()
-    private int saveTask(@RequestBody Task task)
+    private ResponseEntity<Integer> saveTask(@RequestBody Task task)
     {
-        taskService.saveOrUpdate(task);
-        return task.getId();
+        taskService.createTask(task);
+        return new ResponseEntity<>(task.getId(), HttpStatus.OK);
     }
 
     @PutMapping()
-    private Task update(@RequestBody Task task)
+    private ResponseEntity<Task> update(@RequestBody Task task)
     {
-        taskService.saveOrUpdate(task);
-        return task;
+        taskService.update(task);
+        return new ResponseEntity<>(task, HttpStatus.OK);
     }
 }

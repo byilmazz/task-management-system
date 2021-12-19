@@ -1,16 +1,17 @@
 package com.busrayilmaz.cognizanttaskmanagementsystem.service;
 
-import com.busrayilmaz.cognizanttaskmanagementsystem.model.Task;
+import com.busrayilmaz.cognizanttaskmanagementsystem.model.domain.Task;
+import com.busrayilmaz.cognizanttaskmanagementsystem.model.dto.TaskDTO;
 
 import java.util.List;
 
 public interface TaskService {
 
-    List<Task> getTasks();
+    List<TaskDTO> getTasks();
 
-    Task getTaskById(int id);
+    TaskDTO getTaskById(int id);
 
-    void saveOrUpdate(Task task);
+    void createTask(Task task);
 
     void delete(int id);
 
