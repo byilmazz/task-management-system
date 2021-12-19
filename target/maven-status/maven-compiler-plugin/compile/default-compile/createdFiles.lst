@@ -1,0 +1,7 @@
+com/busrayilmaz/cognizanttaskmanagementsystem/repository/TaskRepository.class
+com/busrayilmaz/cognizanttaskmanagementsystem/service/impl/TaskServiceImpl.class
+com/busrayilmaz/cognizanttaskmanagementsystem/config/SwaggerConfig.class
+com/busrayilmaz/cognizanttaskmanagementsystem/model/Task.class
+com/busrayilmaz/cognizanttaskmanagementsystem/CognizantTaskManagementSystemApplication.class
+com/busrayilmaz/cognizanttaskmanagementsystem/service/TaskService.class
+com/busrayilmaz/cognizanttaskmanagementsystem/controller/TaskController.class
